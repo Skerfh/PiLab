@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servidor de Minecraft en Raspberry Pi</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <div class="logo">PiLab</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+
+    <a href="index.html" class="read-more">← Volver</a>
+    <br><br>
+  <article class="full-post">
+    <h1>Servidor de Minecraft en Raspberry Pi 5</h1>
+    <h2>Introducción</h2>
+    <p>
+    Este proyecto consiste en alojar un servidor de Minecraft en una Raspberry Pi,
+    permitiendo jugar con amigos sin depender de servicios de hosting.
+    </p>
+    <p>
+    El uso de PaperMC permite mejorar el rendimiento y estabilidad frente al servidor vanilla,
+    algo importante en hardware limitado.
+    </p>
+    <h2>1. Preparación del sistema</h2>
+    <p>Se recomienda instalar Raspberry Pi OS Lite (sin escritorio).</p>
+    <pre><code>
+    sudo apt update && sudo apt upgrade -y
+    </code></pre>
+    <h2>2. Acceso remoto (SSH)</h2>
+    <pre><code>
+    ssh pi@raspberrypi.local
+    </code></pre>
+    <p>
+    Esto permite administrar la Raspberry Pi sin necesidad de monitor.
+    </p>
+    <h2>3. Instalación de Java</h2>
+    <pre><code>
+    sudo apt install openjdk-17-jdk -y
+    </code></pre>
+    <h2>4. Descargar servidor</h2>
+    <p>
+    Se recomienda usar PaperMC para mejorar rendimiento y compatibilidad.
+    </p>
+    <h2>5. Ejecutar el servidor</h2>
+    <pre><code>
+    java -Xms1G -Xmx3G -jar paper.jar nogui
+    </code></pre>
+    <h2>6. Crear servicio (automatización)</h2>
+    <pre><code>
+    sudo nano /etc/systemd/system/minecraft.service
+    </code></pre>
+    <pre><code>
+    [Unit]
+    Description=Minecraft Server
+    After=network.target
+
+    [Service]
+    WorkingDirectory=/home/pi/minecraft
+    ExecStart=/usr/bin/java -Xms1G -Xmx3G -jar paper.jar nogui
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+    </code></pre>
+    <h2>7. Control del servidor</h2>
+    <pre><code>
+    sudo systemctl start minecraft
+    sudo systemctl stop minecraft
+    sudo systemctl status minecraft
+    </code></pre>
+    <h2>8. Backups automáticos</h2>
+    <p>
+    En implementaciones reales se utilizan scripts bash y tareas programadas (cron)
+    para generar backups periódicos del mundo.
+    </p>
+    <h2>9. Acceso externo</h2>
+    <p>
+    Para permitir conexiones externas se puede usar port forwarding o túneles
+    como Pinggy o ngrok.
+    </p>
+    <h2>Conclusión</h2>
+    <p>
+    Este proyecto permite aprender Linux, redes y automatización,
+    además de crear una infraestructura real sobre Raspberry Pi.
+    </p>
+
+</article>
+
+</main>
+
+</body>
+</html>
+``

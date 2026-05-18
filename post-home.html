@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pihole</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <div class="logo">PiLab</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+
+    <a href="index.html" class="read-more">← Volver</a>
+    <br><br>
+
+    <article class="full-post">
+
+        <h1>Bloqueador de anuncios en red con Pi-hole</h1>
+
+        <h2>Introducción</h2>
+
+        <p>
+        Pi-hole permite bloquear anuncios a nivel de red actuando como servidor DNS.
+        Esto hace que todos los dispositivos se beneficien automáticamente.
+        </p>
+
+        <h2>¿Cómo funciona?</h2>
+
+        <p>
+        Cuando un dispositivo intenta acceder a un dominio de anuncios,
+        Pi-hole bloquea la solicitud DNS.
+        </p>
+
+        <h2>1. Instalación del sistema</h2>
+
+        <p>Instalar Raspberry Pi OS Lite.</p>
+
+        <h2>2. Acceso SSH</h2>
+
+        <pre><code>
+        ssh pi@raspberrypi.local
+        </code></pre>
+
+        <h2>3. Actualización</h2>
+
+        <pre><code>
+        sudo apt update && sudo apt upgrade -y
+        </code></pre>
+
+        <h2>4. Instalación de Pi-hole</h2>
+
+        <pre><code>
+        curl -sSL https://install.pi-hole.net | bash
+        </code></pre>
+
+        <h2>5. Configuración</h2>
+
+        <ul>
+        <li>Seleccionar red (Ethernet)</li>
+        <li>Elegir DNS upstream (Cloudflare recomendado)</li>
+        <li>Activar panel web</li>
+        </ul>
+
+        <h2>6. Acceso al panel</h2>
+
+        <pre><code>
+        http://pi.hole/admin
+        </code></pre>
+
+        <h2>7. Configuración del router</h2>
+
+        <p>
+        Configurar la IP de la Raspberry Pi como servidor DNS principal
+        para aplicar el bloqueo en toda la red.
+        </p>
+
+        <h2>Resultados</h2>
+
+        <ul>
+        <li>Menos anuncios</li>
+        <li>Menos tráfico de red</li>
+        <li>Mayor privacidad</li>
+        </ul>
+
+        <h2>Conclusión</h2>
+
+        <p>
+        Pi-hole es uno de los proyectos más útiles y fáciles de implementar en Raspberry Pi,
+        con impacto inmediato en toda la red.
+        </p>
+
+    </article>
+
+</main>
+</body>
+</html>

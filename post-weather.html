@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estación meteorológica</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="navbar">
+    <div class="logo">PiLab</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+
+    <a href="index.html" class="read-more">← Volver</a>
+    <br><br>
+
+    <article class="full-post">
+
+    <h1>Estación meteorológica con Raspberry Pi</h1>
+
+    <h2>Introducción</h2>
+    <p>
+    Este proyecto consiste en construir un sistema de monitoreo del clima
+    usando sensores conectados a una Raspberry Pi.
+    </p>
+
+    <h2>1. Hardware</h2>
+
+    <ul>
+    <li>Raspberry Pi</li>
+    <li>Weather HAT o sensor DHT22</li>
+    <li>Cables GPIO</li>
+    </ul>
+
+    <h2>2. Conexión del sensor</h2>
+
+    <p>
+    Los sensores se conectan directamente a los pines GPIO de la Raspberry Pi.
+    </p>
+
+    <h2>3. Instalación de librerías</h2>
+
+    <pre><code>
+    sudo apt update
+    pip3 install gpiozero
+    </code></pre>
+
+    <h2>4. Lectura de datos</h2>
+
+    <pre><code>
+    import time
+
+    while True:
+        print("Leyendo temperatura...")
+        time.sleep(2)
+    </code></pre>
+
+    <h2>5. Problemas reales</h2>
+
+    <ul>
+    <li>
+    La temperatura puede verse afectada por el calor del CPU
+    </li>
+    <li>
+    Se requiere ventilación adecuada
+    </li>
+    </ul>
+
+    <p>
+    Esto sucede porque el sensor está muy cerca del procesador.
+    </p>
+
+    <h2>6. Corrección de datos</h2>
+
+    <p>
+    Una solución es aplicar una corrección o calibración usando datos externos,
+    por ejemplo comparando con estaciones meteorológicas reales.
+    </p>
+
+    <h2>7. Consideraciones físicas</h2>
+
+    <ul>
+    <li>Evitar exposición directa al sol</li>
+    <li>Permitir ventilación del dispositivo</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+
+    <p>
+    Este proyecto permite aprender hardware, software y análisis de datos
+    en un entorno práctico.
+    </p>
+
+    </article>
+
+</main>
+</body>
+</html>
